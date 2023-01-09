@@ -18,7 +18,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QWidget)
 
+import mysql.connector
+
 class Ui_Widget(object):
+
+    def check_user(self):
+        return
 
     def setupUi(self, Widget):
         if not Widget.objectName():
@@ -35,6 +40,8 @@ class Ui_Widget(object):
         self.formLayoutWidget = QWidget(Widget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(20, 90, 211, 71))
+
+        #login textboxes
         self.frmLogin = QFormLayout(self.formLayoutWidget)
         self.frmLogin.setObjectName(u"frmLogin")
         self.frmLogin.setContentsMargins(0, 0, 0, 0)
@@ -57,10 +64,13 @@ class Ui_Widget(object):
         self.lPassword.setObjectName(u"lPassword")
 
         self.frmLogin.setWidget(1, QFormLayout.FieldRole, self.lPassword)
+        #
 
+        #Login button
         self.pbLogin = QPushButton(Widget)
         self.pbLogin.setObjectName(u"pbLogin")
         self.pbLogin.setGeometry(QRect(20, 180, 211, 51))
+        #
 
         font1 = QFont()
         font1.setPointSize(24)
