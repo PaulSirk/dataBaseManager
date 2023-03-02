@@ -1,5 +1,3 @@
-from PySide6.QtWidgets import QMessageBox
-
 class Teams:
     def __init__(self, teamName, relationship, genders, seasonId, placement):
         self.teamName = self.__checkString(20, teamName)
