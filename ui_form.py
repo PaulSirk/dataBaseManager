@@ -18,30 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QWidget)
 
-import mysql.connector
-
 class Ui_Widget(object):
-
-    def check_user(self):
-        return
-
     def setupUi(self, Widget):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(256, 286)
-        self.lblLogin = QLabel(Widget)
-        self.lblLogin.setObjectName(u"lblLogin")
-        self.lblLogin.setGeometry(QRect(0, 0, 271, 71))
-        font = QFont()
-        font.setFamilies([u"Serif"])
-        font.setPointSize(36)
-        self.lblLogin.setFont(font)
-        self.lblLogin.setAlignment(Qt.AlignCenter)
+        Widget.resize(250, 305)
         self.formLayoutWidget = QWidget(Widget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(20, 90, 211, 71))
-
-        #login textboxes
         self.frmLogin = QFormLayout(self.formLayoutWidget)
         self.frmLogin.setObjectName(u"frmLogin")
         self.frmLogin.setContentsMargins(0, 0, 0, 0)
@@ -64,23 +48,26 @@ class Ui_Widget(object):
         self.lPassword.setObjectName(u"lPassword")
 
         self.frmLogin.setWidget(1, QFormLayout.FieldRole, self.lPassword)
-        #
 
-        #Login button
         self.pbLogin = QPushButton(Widget)
         self.pbLogin.setObjectName(u"pbLogin")
         self.pbLogin.setGeometry(QRect(20, 180, 211, 51))
-        #
-
-        font1 = QFont()
-        font1.setPointSize(24)
-        self.pbLogin.setFont(font1)
+        font = QFont()
+        font.setPointSize(24)
+        self.pbLogin.setFont(font)
         self.pbExit = QPushButton(Widget)
         self.pbExit.setObjectName(u"pbExit")
         self.pbExit.setGeometry(QRect(20, 240, 211, 31))
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.pbExit.setFont(font1)
+        self.lblLogin = QLabel(Widget)
+        self.lblLogin.setObjectName(u"lblLogin")
+        self.lblLogin.setGeometry(QRect(30, 20, 191, 51))
         font2 = QFont()
-        font2.setPointSize(12)
-        self.pbExit.setFont(font2)
+        font2.setPointSize(36)
+        self.lblLogin.setFont(font2)
+        self.lblLogin.setAlignment(Qt.AlignCenter)
 
         self.retranslateUi(Widget)
         self.pbExit.clicked.connect(Widget.close)
@@ -90,10 +77,10 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Database Manager", None))
-        self.lblLogin.setText(QCoreApplication.translate("Widget", u"Login", None))
         self.lblUsername.setText(QCoreApplication.translate("Widget", u"Username:", None))
         self.lblPassword.setText(QCoreApplication.translate("Widget", u"Password:", None))
         self.pbLogin.setText(QCoreApplication.translate("Widget", u"Login", None))
         self.pbExit.setText(QCoreApplication.translate("Widget", u"Exit", None))
+        self.lblLogin.setText(QCoreApplication.translate("Widget", u"Login", None))
     # retranslateUi
 
