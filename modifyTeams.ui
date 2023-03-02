@@ -29,7 +29,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Data</string>
+    <string>Teams</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -147,7 +147,7 @@
     <string>Accept</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pbAccept_2">
+  <widget class="QPushButton" name="pbCancel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -167,5 +167,22 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pbCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
