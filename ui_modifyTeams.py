@@ -16,66 +16,66 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFormLayout,
-    QLabel, QLineEdit, QPushButton, QSizePolicy,
-    QSpinBox, QWidget)
+    QHBoxLayout, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QSpinBox, QVBoxLayout, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(342, 309)
+        Dialog.resize(342, 382)
+        self.verticalLayout = QVBoxLayout(Dialog)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.lblOperation = QLabel(Dialog)
         self.lblOperation.setObjectName(u"lblOperation")
-        self.lblOperation.setGeometry(QRect(20, 10, 301, 61))
         font = QFont()
         font.setFamilies([u"Serif"])
         font.setPointSize(36)
         self.lblOperation.setFont(font)
         self.lblOperation.setAlignment(Qt.AlignCenter)
-        self.formLayoutWidget = QWidget(Dialog)
-        self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(20, 70, 301, 171))
-        self.frmDataset = QFormLayout(self.formLayoutWidget)
+
+        self.verticalLayout.addWidget(self.lblOperation)
+
+        self.frmDataset = QFormLayout()
         self.frmDataset.setObjectName(u"frmDataset")
-        self.frmDataset.setContentsMargins(0, 0, 0, 0)
-        self.lblTeamName = QLabel(self.formLayoutWidget)
+        self.lblTeamName = QLabel(Dialog)
         self.lblTeamName.setObjectName(u"lblTeamName")
 
         self.frmDataset.setWidget(0, QFormLayout.LabelRole, self.lblTeamName)
 
-        self.leTeamName = QLineEdit(self.formLayoutWidget)
+        self.leTeamName = QLineEdit(Dialog)
         self.leTeamName.setObjectName(u"leTeamName")
         self.leTeamName.setMaxLength(20)
 
         self.frmDataset.setWidget(0, QFormLayout.FieldRole, self.leTeamName)
 
-        self.lblRelationship = QLabel(self.formLayoutWidget)
+        self.lblRelationship = QLabel(Dialog)
         self.lblRelationship.setObjectName(u"lblRelationship")
 
         self.frmDataset.setWidget(1, QFormLayout.LabelRole, self.lblRelationship)
 
-        self.lblGenders = QLabel(self.formLayoutWidget)
+        self.lblGenders = QLabel(Dialog)
         self.lblGenders.setObjectName(u"lblGenders")
 
         self.frmDataset.setWidget(2, QFormLayout.LabelRole, self.lblGenders)
 
-        self.lblSeasonId = QLabel(self.formLayoutWidget)
+        self.lblSeasonId = QLabel(Dialog)
         self.lblSeasonId.setObjectName(u"lblSeasonId")
 
         self.frmDataset.setWidget(3, QFormLayout.LabelRole, self.lblSeasonId)
 
-        self.lblPlacement = QLabel(self.formLayoutWidget)
+        self.lblPlacement = QLabel(Dialog)
         self.lblPlacement.setObjectName(u"lblPlacement")
 
         self.frmDataset.setWidget(4, QFormLayout.LabelRole, self.lblPlacement)
 
-        self.leRelationship = QLineEdit(self.formLayoutWidget)
+        self.leRelationship = QLineEdit(Dialog)
         self.leRelationship.setObjectName(u"leRelationship")
         self.leRelationship.setMaxLength(20)
 
         self.frmDataset.setWidget(1, QFormLayout.FieldRole, self.leRelationship)
 
-        self.cbGenders = QComboBox(self.formLayoutWidget)
+        self.cbGenders = QComboBox(Dialog)
         self.cbGenders.addItem("")
         self.cbGenders.addItem("")
         self.cbGenders.addItem("")
@@ -83,30 +83,43 @@ class Ui_Dialog(object):
 
         self.frmDataset.setWidget(2, QFormLayout.FieldRole, self.cbGenders)
 
-        self.spinBox = QSpinBox(self.formLayoutWidget)
+        self.spinBox = QSpinBox(Dialog)
         self.spinBox.setObjectName(u"spinBox")
         self.spinBox.setMaximum(4)
 
         self.frmDataset.setWidget(3, QFormLayout.FieldRole, self.spinBox)
 
-        self.lineEdit = QLineEdit(self.formLayoutWidget)
+        self.lineEdit = QLineEdit(Dialog)
         self.lineEdit.setObjectName(u"lineEdit")
         self.lineEdit.setMaxLength(2)
 
         self.frmDataset.setWidget(4, QFormLayout.FieldRole, self.lineEdit)
 
+
+        self.verticalLayout.addLayout(self.frmDataset)
+
+        self.hozLayoutTeams = QHBoxLayout()
+        self.hozLayoutTeams.setObjectName(u"hozLayoutTeams")
         self.pbAccept = QPushButton(Dialog)
         self.pbAccept.setObjectName(u"pbAccept")
-        self.pbAccept.setGeometry(QRect(180, 250, 141, 41))
         font1 = QFont()
         font1.setPointSize(16)
         self.pbAccept.setFont(font1)
-        self.pbAccept_2 = QPushButton(Dialog)
-        self.pbAccept_2.setObjectName(u"pbAccept_2")
-        self.pbAccept_2.setGeometry(QRect(20, 250, 141, 41))
-        self.pbAccept_2.setFont(font1)
+
+        self.hozLayoutTeams.addWidget(self.pbAccept)
+
+        self.pbCancel = QPushButton(Dialog)
+        self.pbCancel.setObjectName(u"pbCancel")
+        self.pbCancel.setFont(font1)
+
+        self.hozLayoutTeams.addWidget(self.pbCancel)
+
+
+        self.verticalLayout.addLayout(self.hozLayoutTeams)
+
 
         self.retranslateUi(Dialog)
+        self.pbCancel.clicked.connect(Dialog.close)
 
         QMetaObject.connectSlotsByName(Dialog)
     # setupUi
@@ -124,6 +137,6 @@ class Ui_Dialog(object):
         self.cbGenders.setItemText(2, QCoreApplication.translate("Dialog", u"ff", None))
 
         self.pbAccept.setText(QCoreApplication.translate("Dialog", u"Accept", None))
-        self.pbAccept_2.setText(QCoreApplication.translate("Dialog", u"Cancel", None))
+        self.pbCancel.setText(QCoreApplication.translate("Dialog", u"Cancel", None))
     # retranslateUi
 
